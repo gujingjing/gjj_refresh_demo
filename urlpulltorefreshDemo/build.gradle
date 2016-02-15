@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+//apply from: './gradle-mvn-push.gradle'
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "refresh_demo.gjj.urlpulltorefresh"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+}
+repositories {
+    //从中央库里面获取依赖
+    mavenCentral()
+    //或者使用指定的本地maven 库
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    //butterknife自动注解
+    compile 'com.jakewharton:butterknife:7.0.1'
+    //refresh
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+}
+
